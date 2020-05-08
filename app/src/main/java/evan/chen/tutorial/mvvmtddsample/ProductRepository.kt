@@ -1,9 +1,11 @@
 package evan.chen.tutorial.mvvmtddsample
 
+import evan.chen.tutorial.mvvmtddsample.api.ProductResponse
 import evan.chen.tutorial.mvvmtddsample.api.ServiceApi
+import io.reactivex.Single
 
 interface IProductRepository {
-
+    fun getProduct(): Single<ProductResponse>
 }
 
 class ProductRepository(private val serviceApi: ServiceApi) : IProductRepository {
@@ -21,6 +23,10 @@ class ProductRepository(private val serviceApi: ServiceApi) : IProductRepository
         @JvmStatic fun destroyInstance() {
             INSTANCE = null
         }
+    }
+
+    override fun getProduct(): Single<ProductResponse> {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }
 
