@@ -17,6 +17,20 @@ class ProductViewModel(private val productRepository: IProductRepository) :
     }
 
     fun getProduct(id: String) {
-        TODO("not implemented")
+        this.productId.value = id
+
+        //由於API是寫死的，不是真的可以傳入id，所以這裡不傳入id到getProduct()
+        productRepository.getProduct()
+            .subscribeOn(SchedulerProvider.io())
+            .observeOn(SchedulerProvider.mainThread())
+            .subscribe({ data ->
+                productId.value = data.id
+                productName.value = data.name
+                productDesc.value = data.desc
+                productPrice.value = data.price
+            },
+                { throwable ->
+                    println(throwable)
+                })
     }
 }
