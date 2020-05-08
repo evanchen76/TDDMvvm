@@ -3,31 +3,35 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <data>
-
+        <variable
+            name="productViewModel"
+            type="evan.chen.tutorial.mvvmtddsample.ProductViewModel"/>
     </data>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:padding="20dp"
+        android:orientation="vertical"
         tools:context=".ProductActivity">
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="36sp"
             android:id="@+id/productName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="36sp" />
+            android:text="@{productViewModel.productName}"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:text="@{productViewModel.productDesc}"/>
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:textSize="24sp"
             android:id="@+id/productPrice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:textSize="24sp" />
-
+            android:text="@{`$` +Integer.toString(productViewModel.productPrice)}"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -36,28 +40,28 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="數量:"
-                android:textSize="24sp" />
-            <EditText
-                android:id="@+id/productItems"
-                android:layout_width="50dp"
+                android:textSize="24sp"
+                android:text="數量:"/>
+            <EditText android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                android:id="@+id/productItems"
+                android:text="@={productViewModel.productItems}"/>
         </LinearLayout>
         <TextView
-            android:id="@+id/totalPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="end"
             android:layout_marginTop="12dp"
-            android:textSize="24sp" />
-        <Button
-            android:id="@+id/buy"
-            android:layout_width="match_parent"
+            android:textSize="24sp"
+            android:layout_gravity="end"
+            android:id="@+id/totalPrice" />
+        <Button android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:layout_marginTop="24dp"
             android:padding="10dp"
-            android:text="購買" />
+            android:layout_gravity="center"
+            android:text="購買"
+            android:id="@+id/buy"/>
     </LinearLayout>
+
 </layout>
