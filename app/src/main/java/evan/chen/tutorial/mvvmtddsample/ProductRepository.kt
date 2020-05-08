@@ -26,7 +26,10 @@ class ProductRepository(private val serviceApi: ServiceApi) : IProductRepository
     }
 
     override fun getProduct(): Single<ProductResponse> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return serviceApi.getProduct()
+            .map {
+                it.body()
+            }
     }
 }
 
